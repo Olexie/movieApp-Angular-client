@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = '"https://alexa-movie-universe.herokuapp.com/';
+const apiUrl = 'https://alexa-movie-universe.herokuapp.com/';
 @Injectable({
   providedIn: 'root'
 })
