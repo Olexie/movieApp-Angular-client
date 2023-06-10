@@ -8,24 +8,34 @@
         <img src={{movie.image}} alt= {{movie.title}} />
         <mat-card-actions>
             <button
+                (click)="openUniverse(movie.universe.name, movie.universe.description)"
                 mat-button
                 color="primary"
             >
                 Universe
             </button>
             <button
+                (click)="openDirector(movie.director.name, movie.director.bio)"
                 mat-button
                 color="primary"
             >
                 Director
             </button>
             <button
+                (click)="openDetails(movie.releaseUs)"
                 mat-button
                 color="primary"
             >
-                Synopsis
+                Details
             </button>
+          <button *ngIf="!isFavorite(movie._id)" mat-icon-button (click)="addFavorite(movie._id)" color="primary"
+            matTooltip="Add to favorites">
             <mat-icon>favorite_border</mat-icon>
+          </button>
+          <button *ngIf="isFavorite(movie._id)" mat-icon-button (click)="removeFavorite(movie._id)" color="primary"
+            matTooltip="Remove from favorites">
+            <mat-icon>favorite</mat-icon>
+          </button>
         </mat-card-actions>
     </mat-card>
 </div>

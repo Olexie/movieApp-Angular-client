@@ -111,12 +111,12 @@ export class FetchApiDataService {
   }
 
   // Making the api call for the add a movie to favourite Movies endpoint
-  addFavoriteMovie(movieId: string): Observable<any> {
+  addFavouriteMovie(movieId: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    user.FavoriteMovies.push(movieId);
+    user.favouriteMovies.push(movieId);
     localStorage.setItem('user', JSON.stringify(user));
-    return this.http.post(apiUrl + 'users/' + user.Username + '/movies/' + movieId, {}, {
+    return this.http.post(apiUrl + 'users/' + user.username + '/movies/' + movieId, {}, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -128,16 +128,16 @@ export class FetchApiDataService {
     );
   }
 
-  isFavoriteMovie(movieId: string): boolean {
+  isFavouriteMovie(movieId: string): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavoriteMovies.indexOf(movieId) >= 0;
+    return user.favouriteMovies.indexOf(movieId) >= 0;
   }
 
   // Making the api call for the edit user endpoint
   editUser(updatedUser: any): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/' + user.Username, updatedUser, {
+    return this.http.put(apiUrl + 'users/' + user.username, updatedUser, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -162,15 +162,15 @@ export class FetchApiDataService {
     );
   }
 
-  // Making the api call for the elete a movie from the favorite movies endpoint
-  deleteFavoriteMovie(movieId: string): Observable<any> {
+  // Making the api call for the elete a movie from the favourite movies endpoint
+  deleteFavouriteMovie(movieId: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
 
-    const index = user.FavoriteMovies.indexOf(movieId);
+    const index = user.favouriteMovies.indexOf(movieId);
     console.log(index);
     if (index > -1) { // only splice array when item is found
-      user.FavoriteMovies.splice(index, 1); // 2nd parameter means remove one item only
+      user.favouriteMovies.splice(index, 1); // 2nd parameter means remove one item only
     }
     localStorage.setItem('user', JSON.stringify(user));
     return this.http.delete(apiUrl + 'users/' + user.Username + '/movies/' + movieId, {
