@@ -24,6 +24,10 @@ export class TopBarComponent  implements OnInit {
     this.router.navigate(['profile']);
   }
 
+
+  /**
+  * Clear saved tokens to logout from the app.
+  */
   logOut(): void {
     this.router.navigate(['welcome']);
     localStorage.clear();

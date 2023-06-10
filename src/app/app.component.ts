@@ -5,6 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+/**
+ * Default entry point of the app
+ */
 export class AppComponent {
   title = 'movieApp-Angular-client';
 }

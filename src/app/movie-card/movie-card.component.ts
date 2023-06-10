@@ -20,6 +20,11 @@ ngOnInit(): void {
   this.getMovies();
 }
 
+
+
+/**
+* Calls the get movies method on the API.
+*/
 getMovies(): void {
   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -28,6 +33,10 @@ getMovies(): void {
     });
   }
 
+  /**
+  * Calls the add favorite movie method on the API.
+  * @param id The movie ID
+  */
   addFavorite(id: string): void {
     this.fetchApiData.addFavouriteMovie(id).subscribe((result) => {
 
@@ -36,10 +45,19 @@ getMovies(): void {
       });
     });
   }
+
+  /**
+  * Calls the check favorite movie method on the API.
+  * @param id The movie ID
+  */
   isFavorite(id: string): boolean {
     return this.fetchApiData.isFavouriteMovie(id);
   }
 
+  /**
+  * Calls the delete favorite movie method on the API.
+  * @param id The movie ID
+  */
   removeFavorite(id: string): void {
     this.fetchApiData.deleteFavouriteMovie(id).subscribe((result) => {
       this.snackBar.open('Movie removed from favorites.', 'OK', {
@@ -47,6 +65,13 @@ getMovies(): void {
       });
     });
   }
+
+
+  /**
+  * Opens the universe dialog.
+  * @param name The universe name to show on the dialog (title)
+  * @param description The universe description to show on the dialog
+  */
   openUniverse(name: string, description: string): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
@@ -57,6 +82,11 @@ getMovies(): void {
     });
   }
 
+  /**
+  * Opens the director dialog.
+  * @param name The director's name to show on the dialog (title)
+  * @param bio The director's biography to show on the dialog
+  */
   openDirector(name: string, bio: string): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
@@ -67,6 +97,10 @@ getMovies(): void {
     });
   }
 
+  /**
+  * Opens the movie description dialog.
+  * @param description The text to show on the dialog
+  */
   openDetails(releaseUs: string): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
