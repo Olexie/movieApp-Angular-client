@@ -33,8 +33,7 @@ export class UserProfileComponent implements OnInit {
     this.user = this.fetchApiData.getOneUser();
     this.userData.username = this.user.username;
     this.userData.email = this.user.email;
-    // this.user.Birthday comes in as ISOString format, like so: "2011-10-05T14:48:00.000Z"
-    this.userData.birthday = formatDate(this.user.birthday, 'yyyy-MM-dd', 'en-US', 'UTC+0');
+    this.userData.birthday = formatDate(this.user.birthday, 'yyyy-MM-dd', 'en-GB', 'UTC+1');
 
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.favouriteMovies = resp.filter((m: { _id: any; }) => this.user.favouriteMovies.indexOf(m._id) >= 0);

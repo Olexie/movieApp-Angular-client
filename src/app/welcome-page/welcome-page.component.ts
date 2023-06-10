@@ -29,17 +29,5 @@ openUserLoginDialog(): void {
     width: '280px'
     });
 }
-  
-openMoviesDialog(): void {
-    this.dialog.open(MovieCardComponent, {
-      width: '500px'
-    });
-}
-
-openUserProfileDialog(): void {
-  this.dialog.open(UserProfileComponent, {
-    width: '500px'
-  });
-}
 
 }
